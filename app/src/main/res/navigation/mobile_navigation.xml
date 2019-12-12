@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/destination_splash_screen">
+    <fragment
+        android:id="@+id/destination_home"
+        android:name="com.clover.celebrities.fragments.home.HomeFragment"
+        android:label="Celebrity Scanner"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_destination_home_to_destination_info"
+            app:destination="@id/destination_info"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_info"
+        android:name="com.clover.celebrities.fragments.CelebrityInfoFragment"
+        android:label="Celebrity info"
+        tools:layout="@layout/fragment_celebrity_info" >
+        <argument
+            android:name="celebrityUrl"
+            app:argType="string"
+            android:defaultValue="no_url" />
+        <action
+            android:id="@+id/action_destination_info_to_destination_home"
+            app:destination="@id/destination_home"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/destination_splash_screen"
+        android:name="com.clover.celebrities.fragments.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/nextPage"
+            app:destination="@id/destination_home"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@+id/mobile_navigation" />
+    </fragment>
+</navigation>
